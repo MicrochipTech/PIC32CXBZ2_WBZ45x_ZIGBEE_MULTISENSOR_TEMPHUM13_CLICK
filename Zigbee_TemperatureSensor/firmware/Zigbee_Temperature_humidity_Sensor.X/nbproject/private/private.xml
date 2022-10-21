@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/D:/Task3/Zigbee_TemperatureSensor/firmware/src/config/default/zigbee/z3device/multiSensor/include/tsTemperatureMeasurementCluster.h</file>
+            <file>file:/D:/Task3/Zigbee_TemperatureSensor/firmware/src/config/default/zigbee/z3device/multiSensor/tsTemperatureMeasurementCluster.c</file>
+            <file>file:/D:/Task3/Zigbee_TemperatureSensor/firmware/src/config/default/zigbee/z3device/multiSensor/multiSensor.c</file>
+            <file>file:/D:/Task3/Zigbee_TemperatureSensor/firmware/src/config/default/zigbee/z3device/stack_interface/zcl/include/zcl_api.h</file>
+            <file>file:/D:/Task3/Zigbee_TemperatureSensor/firmware/src/config/default/zigbee/lib/inc/zcl/include/zclHumidityMeasurementCluster.h</file>
+        </group>
+    </open-files>
+</project-private>

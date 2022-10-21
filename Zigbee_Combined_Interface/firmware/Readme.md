@@ -1,6 +1,6 @@
 # Creating Combined Interface application from scratch in WBZ451
 
-<img src="docs/IoT-Made-Easy-Logo.png" width=100>
+<img src="Docs/IoT-Made-Easy-Logo.png" width=100>
 
 
 > "IoT Made Easy!" 

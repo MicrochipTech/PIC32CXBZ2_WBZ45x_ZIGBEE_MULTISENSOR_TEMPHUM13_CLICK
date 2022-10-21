@@ -154,7 +154,7 @@ static void updateSensorsAttributeValues(void)
 }
 ```
 
-![](Docs/Code_Mulstisensor.png)
+![](Docs/Code_Mulstisensor.PNG)
 
 - And also add the following code in the includes section:#include "app_temphum13/app_temphum13.h"
 
@@ -177,7 +177,7 @@ void tempeartureMeasurementUpdateMeasuredValue(uint16_t temp)
 #endif
 }
 ```
-![](Docs/temp_measurement.png)
+![](Docs/temp_measurement.PNG)
 
 - From Projects, go to Header files->config->default->zigbee->z3device->multiSensor->include->tsTemperatureMeasurementCluster.h and replace the following code.
 
@@ -245,8 +245,8 @@ Follow the steps provided in the link to [Build and program the application](htt
 - After programming the board, follow the steps provided in this [link](https://github.com/MicrochipTech/EA71C53A/tree/master/H3/wireless_apps_pic32cxbz2_wbz45/apps/zigbee/zigbee_multisensor#joining-multi-sensor-with-wbz451-combined-interface-ci-coordinator) for joining multisensor with the combined interface coordinator.
 - Once the network is established multisensor will start reporting the temperature and humidity values to Combined interface as shown below. 
 
-![](Docs/Multisensor_output.png)
+![](Docs/Multisensor_output.PNG)
 
 - The Combined interface terminal log will print the received attribute information as shown below.
 
-![](Docs/CI_output.png)
+![](Docs/CI_output.PNG)

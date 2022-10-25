@@ -115,9 +115,9 @@ Connect the Temp&Hum 13 click onto the Mikro bus header of the WBZ451 Curiosity 
 
 | Note | This application repository should be cloned/downloaded to perform the following steps. |
 | :- | :- |
-| Path | wbz451_multisensor_zigbee\Zigbee_TemperatureSensor |
+| Path | PIC32CXBZ2_WBZ45x_ZIGBEE_MULTISENSOR_TEMPHUM13_CLICK\Zigbee_TemperatureSensor |
 
-- Copy the "app_temphum13" folder, which can be found by navigating to the following path: "wbz451_multisensor_zigbee\Zigbee_TemperatureSensor\firmware\src"
+- Copy the "app_temphum13" folder, which can be found by navigating to the following path: "PIC32CXBZ2_WBZ45x_ZIGBEE_MULTISENSOR_TEMPHUM13_CLICK\Zigbee_TemperatureSensor\firmware\src"
 - Paste the folder under source files in your project folder (...\firmware\src).
 
 **Step 7** - Add the files in MPLAB X IDE to your project by following the steps mentioned below.
@@ -154,7 +154,7 @@ static void updateSensorsAttributeValues(void)
 }
 ```
 
-![](Docs/Code_Mulstisensor.PNG)
+![](Docs/Code_Mulstisensor.png)
 
 - And also add the following code in the includes section:#include "app_temphum13/app_temphum13.h"
 
@@ -173,6 +173,7 @@ void tempeartureMeasurementUpdateMeasuredValue(uint16_t temp)
   
   PDS_Store(APP_MS_TEMP_MEASURED_VALUE_MEM_ID);
 #ifdef _ZCL_REPORTING_SUPPORT_
+  printf("Temperature value:%d\r\n",measuredValue);
   ZCL_ReportOnChangeIfNeeded(&tsTemperatureMeasurementClusterServerAttributes.measuredValue);
 #endif
 }
@@ -185,7 +186,7 @@ void tempeartureMeasurementUpdateMeasuredValue(uint16_t temp)
 void tempeartureMeasurementUpdateMeasuredValue(uint16_t temp);
 ```
 
-**Step 10** - From Projects go to Source files->configdefault->zigbee->z3device->multiSensor->hsHumidityMeasurementCluster.c and replace the following code.
+**Step 10** - From Projects, go to Source files->config->default->zigbee->z3device->multiSensor->hsHumidityMeasurementCluster.c and replace the following code.
 
 ```
 void humidityMeasurementUpdateMeasuredValue(uint16_t humidity)
@@ -201,6 +202,7 @@ void humidityMeasurementUpdateMeasuredValue(uint16_t humidity)
   
   PDS_Store(APP_MS_HUMIDITY_MEASURED_VALUE_MEM_ID);
 #ifdef _ZCL_REPORTING_SUPPORT_
+  printf("Humidity value:%d\r\n",measuredValue);
   ZCL_ReportOnChangeIfNeeded(&hsHumidityMeasurementClusterServerAttributes.measuredValue);
 #endif
 }
@@ -214,29 +216,68 @@ void humidityMeasurementUpdateMeasuredValue(uint16_t humidity)
 void humidityMeasurementUpdateMeasuredValue(uint16_t humidity);
 ```
 
-**Step 11** - Clean and build the project. To run the project, select "Make and program device" button.
+**Step 11** - To enable in printf in your project, go to Source files->config->default->stdio->xc32_monitor.c and replace with the following code.
+
+```
+#include <stddef.h>
+#include "definitions.h"
+
+extern int read(int handle, void *buffer, unsigned int len);
+extern int write(int handle, void * buffer, size_t count);
+
+
+int read(int handle, void *buffer, unsigned int len)
+{
+    int nChars = 0;
+    bool success = false;
+    (void)len;
+    if ((handle == 0)  && (len > 0))
+    {
+        do
+        {
+            success = SERCOM0_USART_Read(buffer, 1);
+        }while( !success);
+        nChars = 1;
+    }
+    return nChars;
+}
+
+int write(int handle, void * buffer, size_t count)
+{
+   bool success = false;
+   if (handle == 1)
+   {
+       do
+       {
+           success = SERCOM0_USART_Write(buffer, count);
+       }while( !success);
+   }
+   return count;
+}
+```
+
+**Step 12** - Clean and build the project. To run the project, select "Make and program device" button.
 
 ### Getting started with Combined Interface application in WBZ451 Curiosity board 
 
-
-- Follow the steps provided under [program the precompiled hex file](https://github.com/MicrochipTech/PIC32CXBZ2_WBZ45x_BLE_SENSOR_Touch_ATtiny3217#7-board-programming) section to program the ATtiny3217 Xplained Pro and T10 Xplained Pro interface.
-- To create the MCC project from scratch follow steps provided in this [link](https://github.com/MicrochipTech/PIC32CXBZ2_WBZ45x_BLE_SENSOR_Touch_ATtiny3217/tree/main/ATTiny3217_T10#wbz45x-ble-sensor-with-attiny3217-touch-demo).
+- Follow the steps provided under [program the precompiled hex file](https://github.com/MicrochipTech/PIC32CXBZ2_WBZ45x_ZIGBEE_MULTISENSOR_TEMPHUM13_CLICK#program-the-precompiled-hex-file-using-mplab-x-ipe) section to program the board.
+- To create the MCC project from scratch follow steps provided in this [link](https://github.com/MicrochipTech/PIC32CXBZ2_WBZ45x_ZIGBEE_MULTISENSOR_TEMPHUM13_CLICK/tree/main/Zigbee_Combined_Interface/firmware#creating-combined-interface-application-from-scratch-in-wbz451).
 
 ## 6. Board Programming<a name="step6">
 
 ### Program the precompiled hex file using MPLAB X IPE
 
 The application hex files can be found by navigating to the following paths: 
-- "wbz451_multisensor_zigbee\Zigbee_Combined_Interface.X.production.hex"
-- "wbz451_multisensor_zigbee\Zigbee_Temperature_humidity_Sensor.X.production.hex"
+- "PIC32CXBZ2_WBZ45x_ZIGBEE_MULTISENSOR_TEMPHUM13_CLICK\Zigbee_Combined_Interface.X.production.hex"
+- "PIC32CXBZ2_WBZ45x_ZIGBEE_MULTISENSOR_TEMPHUM13_CLICK\Zigbee_Temperature_humidity_Sensor.X.production.hex"
 
 Follow the steps provided in the link to [program the precompiled hex file](https://microchipdeveloper.com/ipe:programming-device) using MPLABX IPE to program the pre-compiled hex image. 
 
 ### Build and program the application using MPLAB X IDE
 
 The application folders can be found by navigating to the following paths: 
-- "wbz451_multisensor_zigbee\Zigbee_Combined_Interface"
-- "wbz451_multisensor_zigbee\Zigbee_TemperatureSensor"
+- "PIC32CXBZ2_WBZ45x_ZIGBEE_MULTISENSOR_TEMPHUM13_CLICK\Zigbee_Combined_Interface"
+- "PIC32CXBZ2_WBZ45x_ZIGBEE_MULTISENSOR_TEMPHUM13_CLICK\Zigbee_TemperatureSensor"
 
 Follow the steps provided in the link to [Build and program the application](https://github.com/Microchip-MPLAB-Harmony/wireless_apps_pic32cxbz2_wbz45/tree/master/apps/ble/advanced_applications/ble_sensor#build-and-program-the-application-guid-3d55fb8a-5995-439d-bcd6-deae7e8e78ad-section).
 

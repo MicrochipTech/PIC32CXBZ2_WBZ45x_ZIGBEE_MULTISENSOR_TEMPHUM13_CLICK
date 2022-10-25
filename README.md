@@ -225,7 +225,6 @@ void humidityMeasurementUpdateMeasuredValue(uint16_t humidity);
 extern int read(int handle, void *buffer, unsigned int len);
 extern int write(int handle, void * buffer, size_t count);
 
-
 int read(int handle, void *buffer, unsigned int len)
 {
     int nChars = 0;

@@ -108,3 +108,5 @@ appSnprintf( "<-Relative Humidity Measurement Value = %d\r\n", reportValue);
 - appSnprintf("<-On/Off Attr Report: Value = 0x%x\r\n", (int)rep->value[0]);
 
 **Step 9** - Clean and build the project. To run the project, select "Make and program device" button.
+
+**Step 10** - To run the demo, please follow the steps mentioned in this [link](https://github.com/MicrochipTech/PIC32CXBZ2_WBZ45x_ZIGBEE_MULTISENSOR_TEMPHUM13_CLICK#7-run-the-demo).

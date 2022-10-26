@@ -115,9 +115,9 @@ Connect the Temp&Hum 13 click onto the Mikro bus header of the WBZ451 Curiosity 
 
 | Note | This application repository should be cloned/downloaded to perform the following steps. |
 | :- | :- |
-| Path | PIC32CXBZ2_WBZ45x_ZIGBEE_MULTISENSOR_TEMPHUM13_CLICK\Zigbee_TemperatureSensor |
+| Path | PIC32CXBZ2_WBZ45x_ZIGBEE_MULTISENSOR_TEMPHUM13_CLICK\Zigbee_Multisensor_temphum |
 
-- Copy the "app_temphum13" folder, which can be found by navigating to the following path: "PIC32CXBZ2_WBZ45x_ZIGBEE_MULTISENSOR_TEMPHUM13_CLICK\Zigbee_TemperatureSensor\firmware\src"
+- Copy the "app_temphum13" folder, which can be found by navigating to the following path: "PIC32CXBZ2_WBZ45x_ZIGBEE_MULTISENSOR_TEMPHUM13_CLICK\Zigbee_Multisensor_temphum\firmware\src"
 - Paste the folder under source files in your project folder (...\firmware\src).
 
 **Step 7** - Add the files in MPLAB X IDE to your project by following the steps mentioned below.
@@ -276,7 +276,7 @@ Follow the steps provided in the link to [program the precompiled hex file](http
 
 The application folders can be found by navigating to the following paths: 
 - "PIC32CXBZ2_WBZ45x_ZIGBEE_MULTISENSOR_TEMPHUM13_CLICK\Zigbee_Combined_Interface"
-- "PIC32CXBZ2_WBZ45x_ZIGBEE_MULTISENSOR_TEMPHUM13_CLICK\Zigbee_TemperatureSensor"
+- "PIC32CXBZ2_WBZ45x_ZIGBEE_MULTISENSOR_TEMPHUM13_CLICK\Zigbee_Multisensor_temphum"
 
 Follow the steps provided in the link to [Build and program the application](https://github.com/Microchip-MPLAB-Harmony/wireless_apps_pic32cxbz2_wbz45/tree/master/apps/ble/advanced_applications/ble_sensor#build-and-program-the-application-guid-3d55fb8a-5995-439d-bcd6-deae7e8e78ad-section).
 

@@ -84,7 +84,27 @@ Checkout the <a href="https://microchipsupport.force.com/s/" target="_blank">Tec
 
 - "#error User action required - manually edit files as described here".
 
-**Step 6** - From Projects go to Source files->app_zigbee->app_zigbee_handler.c and replace the following code.
+**Step 6** - In "app.c", replace lines 58,59 and 60 with following code lines.
+
+```
+#include "z3device/common/include/z3Device.h"
+#include "z3device/stack_interface/zgb_api.h"
+#include "z3device/stack_interface/bdb/include/bdb_api.h"
+```
+
+**Step 7** - In "app_idle_task.c", replace the line 362 with the following code.
+
+```
+ZB_EnterSleep(false);
+```
+
+**Step 8** - In "app_idle_task.c", replace the line 459 with the following code.
+
+```
+ZB_WakeUpFromSleep(false);
+```
+
+**Step 9** - From Projects go to Source files->app_zigbee->app_zigbee_handler.c and replace the following code.
 
 ```
 int16_t reportValue;
@@ -100,13 +120,13 @@ memcpy(&reportValue, &rep->value[0], sizeof(uint16_t));
 appSnprintf( "<-Relative Humidity Measurement Value = %d\r\n", reportValue);
 ```
 
-**Step 8** - From Projects go to Source files->app_zigbee->app_zigbee_handler.c and **comment** the folloing code lines.
+**Step 10** - From Projects go to Source files->app_zigbee->app_zigbee_handler.c and **comment** the folloing code lines.
 
 - appSnprintf("<-Occupancy Sensor Attr Report: Value = 0x%x\r\n", (int)rep->value[0]);
 - appSnprintf("<-Level Control Attr Report: Value = 0x%x\r\n", (int)rep->value[0]);
 - appSnprintf("<-Light Sensor Attr Report: Value = 0x%x\r\n", reportValue);
 - appSnprintf("<-On/Off Attr Report: Value = 0x%x\r\n", (int)rep->value[0]);
 
-**Step 9** - Clean and build the project. To run the project, select "Make and program device" button.
+**Step 11** - Clean and build the project. To run the project, select "Make and program device" button.
 
-**Step 10** - To run the demo, please follow the steps mentioned in this [link](https://github.com/MicrochipTech/PIC32CXBZ2_WBZ45x_ZIGBEE_MULTISENSOR_TEMPHUM13_CLICK#7-run-the-demo).
+**Step 12** - To run the demo, please follow the steps mentioned in this [link](https://github.com/MicrochipTech/PIC32CXBZ2_WBZ45x_ZIGBEE_MULTISENSOR_TEMPHUM13_CLICK#7-run-the-demo).

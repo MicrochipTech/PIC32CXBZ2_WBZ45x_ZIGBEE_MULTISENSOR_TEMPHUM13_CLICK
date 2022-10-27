@@ -83,7 +83,7 @@ Connect the Temp&Hum 13 click onto the Mikro bus header of the WBZ451 Curiosity 
 
 ![](Docs/Project_graph.PNG)
 
-- In Device resources, go to wireless->zigbee->Device types and select Multisensor. Accept Dependencies or satisfiers, select "Yes". The MULTISENSOR configuration is depicted as follows.
+- In Device resources, go to wireless->drivers->zigbee->Device types and select Multisensor. Accept Dependencies or satisfiers, select "Yes". The MULTISENSOR configuration is depicted as follows.
 
 ![](Docs/Multisensor_configuration.PNG)
 
@@ -111,7 +111,27 @@ Connect the Temp&Hum 13 click onto the Mikro bus header of the WBZ451 Curiosity 
 
 - "#error User action required - manually edit files as described here".
 
-**Step 6** - Copy the mentioned files from this repository by navigating to the location mentioned below and paste it your project folder. 
+**Step 6** - In "app.c", replace lines 58,59 and 60 with following code lines.
+
+```
+#include "z3device/common/include/z3Device.h"
+#include "z3device/stack_interface/zgb_api.h"
+#include "z3device/stack_interface/bdb/include/bdb_api.h"
+```
+
+**Step 7** - In "app_idle_task.c", replace the line 362 with the following code.
+
+```
+ZB_EnterSleep(false);
+```
+
+**Step 8** - In "app_idle_task.c", replace the line 459 with the following code.
+
+```
+ZB_WakeUpFromSleep(false);
+```
+
+**Step 9** - Copy the mentioned files from this repository by navigating to the location mentioned below and paste it your project folder. 
 
 | Note | This application repository should be cloned/downloaded to perform the following steps. |
 | :- | :- |
@@ -120,7 +140,7 @@ Connect the Temp&Hum 13 click onto the Mikro bus header of the WBZ451 Curiosity 
 - Copy the "app_temphum13" folder, which can be found by navigating to the following path: "PIC32CXBZ2_WBZ45x_ZIGBEE_MULTISENSOR_TEMPHUM13_CLICK\Zigbee_Multisensor_temphum\firmware\src"
 - Paste the folder under source files in your project folder (...\firmware\src).
 
-**Step 7** - Add the files in MPLAB X IDE to your project by following the steps mentioned below.
+**Step 10** - Add the files in MPLAB X IDE to your project by following the steps mentioned below.
 
 - In Projects section, right click on Source files to add the ".c" file and Header files to add the ".h" file.
 - Select "Add existing items from folder".
@@ -128,7 +148,7 @@ Connect the Temp&Hum 13 click onto the Mikro bus header of the WBZ451 Curiosity 
 - Make sure the "Files of type" is "C Source files" while adding ".c" files and "Header files" while adding ".h" files.
 - Select the folder and click "add".
 
-**Step 8** - From Projects, go to Source files->config->default->zigbee->z3device->multiSensor->multiSensor.c and replace the following code.
+**Step 11** - From Projects, go to Source files->config->default->zigbee->z3device->multiSensor->multiSensor.c and replace the following code.
 
 ```
 static void updateSensorsAttributeValues(void)
@@ -156,9 +176,12 @@ static void updateSensorsAttributeValues(void)
 
 ![](Docs/Code_Mulstisensor.png)
 
-- And also add the following code in the includes section:#include "app_temphum13/app_temphum13.h"
+- And also add the following code in the includes section:
+```
+#include "app_temphum13/app_temphum13.h"
+```
 
-**Step 9** - From Projects, go to Source files->config->default->zigbee->z3device->multiSensor->tsTemperatureMeasurementCluster.c and replace the following code.
+**Step 12** - From Projects, go to Source files->config->default->zigbee->z3device->multiSensor->tsTemperatureMeasurementCluster.c and replace the following code.
 
 ```
 void tempeartureMeasurementUpdateMeasuredValue(uint16_t temp)
@@ -186,7 +209,7 @@ void tempeartureMeasurementUpdateMeasuredValue(uint16_t temp)
 void tempeartureMeasurementUpdateMeasuredValue(uint16_t temp);
 ```
 
-**Step 10** - From Projects, go to Source files->config->default->zigbee->z3device->multiSensor->hsHumidityMeasurementCluster.c and replace the following code.
+**Step 13** - From Projects, go to Source files->config->default->zigbee->z3device->multiSensor->hsHumidityMeasurementCluster.c and replace the following code.
 
 ```
 void humidityMeasurementUpdateMeasuredValue(uint16_t humidity)
@@ -216,7 +239,7 @@ void humidityMeasurementUpdateMeasuredValue(uint16_t humidity)
 void humidityMeasurementUpdateMeasuredValue(uint16_t humidity);
 ```
 
-**Step 11** - To enable in printf in your project, go to Source files->config->default->stdio->xc32_monitor.c and replace with the following code.
+**Step 14** - To enable in printf in your project, go to Source files->config->default->stdio->xc32_monitor.c and replace with the following code.
 
 ```
 #include <stddef.h>
@@ -255,7 +278,7 @@ int write(int handle, void * buffer, size_t count)
 }
 ```
 
-**Step 12** - Clean and build the project. To run the project, select "Make and program device" button.
+**Step 15** - Clean and build the project. To run the project, select "Make and program device" button.
 
 ### Getting started with Combined Interface application in WBZ451 Curiosity board 
 

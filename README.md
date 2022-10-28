@@ -297,5 +297,5 @@ Follow the steps provided in the link to [Build and program the application](htt
 - The multisensor application can also be connected to Alexa. To connect to alexa please follow the steps mentioned below.
 |Note|This step will require Alexa app|
 	- After plugging in your alexa , say "Alexa discover devices" and the network will be established. Go into the disovered device in the app and we can see the temperature reported in the alexa app as shown below.
-![](Docs/Alexa_multisensor_output.PNG)	
+![](Docs/Alexa_multisensor_output.jpg)	
 	

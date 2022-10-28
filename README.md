@@ -85,7 +85,7 @@ Connect the Temp&Hum 13 click onto the Mikro bus header of the WBZ451 Curiosity 
 
 - In Device resources, go to wireless->drivers->zigbee->Device types and select Multisensor. Accept Dependencies or satisfiers, select "Yes". The MULTISENSOR configuration is depicted as follows.
 
-![](Docs/Multisensor_configuration.PNG)
+![](Docs/Multi_configuration.png)
 
 - Add UART components needed for console logs and commands. Right click on the "⬦" in Zigbee console and add the satisfier and in the same way add SERCOM0 to the USART console. 
 

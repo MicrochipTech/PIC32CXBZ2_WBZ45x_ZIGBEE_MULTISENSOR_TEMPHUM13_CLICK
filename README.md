@@ -31,7 +31,7 @@ Checkout the <a href="https://microchipsupport.force.com/s/" target="_blank">Tec
 
 ## 1. Introduction<a name="step1">
 
-This application enables the users to create a Zigbee network between multisensor and combined interface application. Here the multisensor acts as an end device and combined interface acts as a coordinator. Multisensor reports temperature and humidity values to the combined interface with the use of Temp&Hum 13 click. The combined interface prints the reported data onto the console.
+This application enables the users to create a Zigbee network between multisensor and combined interface application or any coordinator device (Example: Alexa). Here the multisensor acts as an end device and combined interface or Alexa acts as a coordinator. Multisensor reports temperature and humidity values to the coordinator with the use of Temp&Hum 13 click. The combined interface prints the reported data onto the console.
 
 ![](Docs/Hardware_Setup.PNG)
 
@@ -111,27 +111,7 @@ Connect the Temp&Hum 13 click onto the Mikro bus header of the WBZ451 Curiosity 
 
 - "#error User action required - manually edit files as described here".
 
-**Step 6** - In "app.c", replace lines 58,59 and 60 with following code lines.
-
-```
-#include "z3device/common/include/z3Device.h"
-#include "z3device/stack_interface/zgb_api.h"
-#include "z3device/stack_interface/bdb/include/bdb_api.h"
-```
-
-**Step 7** - In "app_idle_task.c", replace the line 362 with the following code.
-
-```
-ZB_EnterSleep(false);
-```
-
-**Step 8** - In "app_idle_task.c", replace the line 459 with the following code.
-
-```
-ZB_WakeUpFromSleep(false);
-```
-
-**Step 9** - Copy the mentioned files from this repository by navigating to the location mentioned below and paste it your project folder. 
+**Step 6** - Copy the mentioned files from this repository by navigating to the location mentioned below and paste it your project folder. 
 
 | Note | This application repository should be cloned/downloaded to perform the following steps. |
 | :- | :- |
@@ -140,7 +120,7 @@ ZB_WakeUpFromSleep(false);
 - Copy the "app_temphum13" folder, which can be found by navigating to the following path: "PIC32CXBZ2_WBZ45x_ZIGBEE_MULTISENSOR_TEMPHUM13_CLICK\Zigbee_Multisensor_temphum\firmware\src"
 - Paste the folder under source files in your project folder (...\firmware\src).
 
-**Step 10** - Add the files in MPLAB X IDE to your project by following the steps mentioned below.
+**Step 7** - Add the files in MPLAB X IDE to your project by following the steps mentioned below.
 
 - In Projects section, right click on Source files to add the ".c" file and Header files to add the ".h" file.
 - Select "Add existing items from folder".
@@ -148,7 +128,7 @@ ZB_WakeUpFromSleep(false);
 - Make sure the "Files of type" is "C Source files" while adding ".c" files and "Header files" while adding ".h" files.
 - Select the folder and click "add".
 
-**Step 11** - From Projects, go to Source files->config->default->zigbee->z3device->multiSensor->multiSensor.c and replace the following code.
+**Step 8** - From Projects, go to Source files->config->default->zigbee->z3device->multiSensor->multiSensor.c and replace the following code.
 
 ```
 static void updateSensorsAttributeValues(void)
@@ -181,7 +161,7 @@ static void updateSensorsAttributeValues(void)
 #include "app_temphum13/app_temphum13.h"
 ```
 
-**Step 12** - From Projects, go to Source files->config->default->zigbee->z3device->multiSensor->tsTemperatureMeasurementCluster.c and replace the following code.
+**Step 9** - From Projects, go to Source files->config->default->zigbee->z3device->multiSensor->tsTemperatureMeasurementCluster.c and replace the following code.
 
 ```
 void tempeartureMeasurementUpdateMeasuredValue(uint16_t temp)
@@ -209,7 +189,7 @@ void tempeartureMeasurementUpdateMeasuredValue(uint16_t temp)
 void tempeartureMeasurementUpdateMeasuredValue(uint16_t temp);
 ```
 
-**Step 13** - From Projects, go to Source files->config->default->zigbee->z3device->multiSensor->hsHumidityMeasurementCluster.c and replace the following code.
+**Step 10** - From Projects, go to Source files->config->default->zigbee->z3device->multiSensor->hsHumidityMeasurementCluster.c and replace the following code.
 
 ```
 void humidityMeasurementUpdateMeasuredValue(uint16_t humidity)
@@ -239,7 +219,7 @@ void humidityMeasurementUpdateMeasuredValue(uint16_t humidity)
 void humidityMeasurementUpdateMeasuredValue(uint16_t humidity);
 ```
 
-**Step 14** - To enable in printf in your project, go to Source files->config->default->stdio->xc32_monitor.c and replace with the following code.
+**Step 11** - To enable in printf in your project, go to Source files->config->default->stdio->xc32_monitor.c and replace with the following code.
 
 ```
 #include <stddef.h>
@@ -278,7 +258,7 @@ int write(int handle, void * buffer, size_t count)
 }
 ```
 
-**Step 15** - Clean and build the project. To run the project, select "Make and program device" button.
+**Step 12** - Clean and build the project. To run the project, select "Make and program device" button.
 
 ### Getting started with Combined Interface application in WBZ451 Curiosity board 
 
@@ -313,3 +293,9 @@ Follow the steps provided in the link to [Build and program the application](htt
 - The Combined interface terminal log will print the received attribute information as shown below.
 
 ![](Docs/CI_output.PNG)
+
+- The multisensor application can also be connected to Alexa. To connect to alexa please follow the steps mentioned below.
+|Note|This step will require Alexa app|
+	- After plugging in your alexa , say "Alexa discover devices" and the network will be established. Go into the disovered device in the app and we can see the temperature reported in the alexa app as shown below.
+![](Docs/Alexa_multisensor_output.PNG)	
+	

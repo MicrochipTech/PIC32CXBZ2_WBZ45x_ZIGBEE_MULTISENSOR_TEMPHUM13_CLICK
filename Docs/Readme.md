@@ -92,7 +92,7 @@ memcpy(&reportValue, &rep->value[0], sizeof(int16_t));
 appSnprintf( "<-Temperature Measurement Value = %d\r\n", reportValue);
 ```
 
-![](Docs/ci_code.png)
+![](Docs/ci_code.PNG)
 
 ```
 uint16_t reportValue;

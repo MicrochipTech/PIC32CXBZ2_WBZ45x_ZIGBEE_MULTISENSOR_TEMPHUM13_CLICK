@@ -100,13 +100,6 @@ memcpy(&reportValue, &rep->value[0], sizeof(uint16_t));
 appSnprintf( "<-Relative Humidity Measurement Value = %d\r\n", reportValue);
 ```
 
-**Step 7** - From Projects go to Source files->app_zigbee->app_zigbee_handler.c and **comment** the folloing code lines.
+**Step 7** - Clean and build the project. To run the project, select "Make and program device" button.
 
-- appSnprintf("<-Occupancy Sensor Attr Report: Value = 0x%x\r\n", (int)rep->value[0]);
-- appSnprintf("<-Level Control Attr Report: Value = 0x%x\r\n", (int)rep->value[0]);
-- appSnprintf("<-Light Sensor Attr Report: Value = 0x%x\r\n", reportValue);
-- appSnprintf("<-On/Off Attr Report: Value = 0x%x\r\n", (int)rep->value[0]);
-
-**Step 8** - Clean and build the project. To run the project, select "Make and program device" button.
-
-**Step 9** - To run the demo, please follow the steps mentioned in this [link](https://github.com/MicrochipTech/PIC32CXBZ2_WBZ45x_ZIGBEE_MULTISENSOR_TEMPHUM13_CLICK#7-run-the-demo).
+**Step 8** - To run the demo, please follow the steps mentioned in this [link](https://github.com/MicrochipTech/PIC32CXBZ2_WBZ45x_ZIGBEE_MULTISENSOR_TEMPHUM13_CLICK#7-run-the-demo).

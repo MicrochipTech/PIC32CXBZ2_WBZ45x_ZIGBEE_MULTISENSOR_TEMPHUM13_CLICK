@@ -219,7 +219,53 @@ void humidityMeasurementUpdateMeasuredValue(uint16_t humidity)
 void humidityMeasurementUpdateMeasuredValue(uint16_t humidity);
 ```
 
-**Step 11** - To enable in printf in your project, go to Source files->config->default->stdio->xc32_monitor.c and replace with the following code.
+**Step 11** - From projects, go to source files->app_zigbee->app_zigbee_handler.c and comment lines 620 to 653
+
+```
+//        case CMD_ZCL_ATTR_OCCUPANCY:
+//        {
+//            /* Command ZCL OccupancyAttributeEventInd */
+//            //Access - > event.eventData.zclAttributeData.addressing;
+//            //Access - > event.eventData.zclAttributeData.attributeId;
+//            //Access - > event.eventData.zclAttributeData.event;
+//            ZCL_AttributeEvent_t eventzcl = event.eventData.zclAttributeData.event;
+//            ZCL_AttributeId_t attributeId = event.eventData.zclAttributeData.attributeId;
+//            if ((ZCL_CONFIGURE_DEFAULT_ATTRIBUTE_REPORTING_EVENT == eventzcl) && \
+//                (ZCL_OCCUPANCY_SENSING_CLUSTER_OCCUPANCY_SERVER_ATTRIBUTE_ID == attributeId))
+//            {
+//                osOccupancySensingClusterServerAttributes.occupancy.minReportInterval = OCCUPANCY_SENSING_VAL_MIN_REPORT_PERIOD;
+//                osOccupancySensingClusterServerAttributes.occupancy.maxReportInterval = OCCUPANCY_SENSING_VAL_MAX_REPORT_PERIOD;
+//                osOccupancySensingClusterServerAttributes.occupancy.reportableChange = 0;     
+//            }
+//        }
+//        break;
+//        case CMD_ZCL_ATTR_ILLUMINANCE_MEASUREMENT:
+//        {
+//            /* Command ZCL OnOffAttributeEventInd */
+//            //Access - > event.eventData.zclAttributeData.addressing;
+//            //Access - > event.eventData.zclAttributeData.attributeId;
+//            //Access - > event.eventData.zclAttributeData.event;
+//            ZCL_AttributeEvent_t eventzcl = event.eventData.zclAttributeData.event;
+//            ZCL_AttributeId_t attributeId = event.eventData.zclAttributeData.attributeId;
+//            if((ZCL_CONFIGURE_DEFAULT_ATTRIBUTE_REPORTING_EVENT == eventzcl) && \
+//                (ZCL_ILLUMINANCE_MEASUREMENT_CLUSTER_MEASURED_VALUE_SERVER_ATTRIBUTE_ID == attributeId))
+//            {
+//                lsIlluminanceMeasurementClusterServerAttributes.measuredValue.minReportInterval = ILLUMINANCE_MEASUREMENT_VAL_MIN_REPORT_PERIOD;
+//                lsIlluminanceMeasurementClusterServerAttributes.measuredValue.maxReportInterval = ILLUMINANCE_MEASUREMENT_VAL_MAX_REPORT_PERIOD;
+//                lsIlluminanceMeasurementClusterServerAttributes.measuredValue.reportableChange = 0;
+//            }
+//        }
+//        break;
+```
+
+**Step 12** - From Projects, go to Header files->config->default->zigbee->z3device_configs->zigbeeAppConfig.h and comment lines 160 and 161.
+
+```
+//#define APP_SENSOR_TYPE_OCCUPANCY_SENSOR    //Occupancy Sensor Device.
+//#define APP_SENSOR_TYPE_LIGHT_SENSOR
+```
+
+**Step 13** - To enable in printf in your project, go to Source files->config->default->stdio->xc32_monitor.c and replace with the following code.
 
 ```
 #include <stddef.h>
@@ -258,27 +304,26 @@ int write(int handle, void * buffer, size_t count)
 }
 ```
 
-**Step 12** - Clean and build the project. To run the project, select "Make and program device" button.
+**Step 14** - Clean and build the project. To run the project, select "Make and program device" button.
 
 ### Getting started with Combined Interface application in WBZ451 Curiosity board 
 
-- Follow the steps provided under [program the precompiled hex file](https://github.com/MicrochipTech/PIC32CXBZ2_WBZ45x_ZIGBEE_MULTISENSOR_TEMPHUM13_CLICK#program-the-precompiled-hex-file-using-mplab-x-ipe) section to program the board.
+- Combined interface application folder will be available in this [link](https://github.com/Microchip-MPLAB-Harmony/wireless_apps_pic32cxbz2_wbz45/tree/master/apps/zigbee/combinedInterface).
+- Follow the steps provided in the above mentioned link to program the board.
 - To create the MCC project from scratch follow steps provided in this [link](https://github.com/MicrochipTech/PIC32CXBZ2_WBZ45x_ZIGBEE_MULTISENSOR_TEMPHUM13_CLICK/tree/main/Zigbee_Combined_Interface/firmware#creating-combined-interface-application-from-scratch-in-wbz451).
 
 ## 6. Board Programming<a name="step6">
 
 ### Program the precompiled hex file using MPLAB X IPE
 
-The application hex files can be found by navigating to the following paths: 
-- "PIC32CXBZ2_WBZ45x_ZIGBEE_MULTISENSOR_TEMPHUM13_CLICK\Zigbee_Combined_Interface.X.production.hex"
+The application hex file can be found by navigating to the following path: 
 - "PIC32CXBZ2_WBZ45x_ZIGBEE_MULTISENSOR_TEMPHUM13_CLICK\Zigbee_Temperature_humidity_Sensor.X.production.hex"
 
 Follow the steps provided in the link to [program the precompiled hex file](https://microchipdeveloper.com/ipe:programming-device) using MPLABX IPE to program the pre-compiled hex image. 
 
 ### Build and program the application using MPLAB X IDE
 
-The application folders can be found by navigating to the following paths: 
-- "PIC32CXBZ2_WBZ45x_ZIGBEE_MULTISENSOR_TEMPHUM13_CLICK\Zigbee_Combined_Interface"
+The application folder can be found by navigating to the following path: 
 - "PIC32CXBZ2_WBZ45x_ZIGBEE_MULTISENSOR_TEMPHUM13_CLICK\Zigbee_Multisensor_temphum"
 
 Follow the steps provided in the link to [Build and program the application](https://github.com/Microchip-MPLAB-Harmony/wireless_apps_pic32cxbz2_wbz45/tree/master/apps/ble/advanced_applications/ble_sensor#build-and-program-the-application-guid-3d55fb8a-5995-439d-bcd6-deae7e8e78ad-section).
@@ -298,4 +343,4 @@ Follow the steps provided in the link to [Build and program the application](htt
 |Note|This step will require Alexa app|
 	- After plugging in your alexa , say "Alexa discover devices" and the network will be established. Go into the disovered device in the app and we can see the temperature reported in the alexa app as shown below.
 ![](Docs/Alexa_multisensor_output.jpg)	
-	
+

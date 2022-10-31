@@ -222,7 +222,14 @@ void humidityMeasurementUpdateMeasuredValue(uint16_t humidity)
 void humidityMeasurementUpdateMeasuredValue(uint16_t humidity);
 ```
 
-**Step 11** - From projects, go to source files->app_zigbee->app_zigbee_handler.c and comment lines 620 to 653
+**Step 11** - From Projects, go to Header files->config->default->zigbee->z3device_configs->zigbeeAppConfig.h and comment lines 160 and 161.
+
+```
+//#define APP_SENSOR_TYPE_OCCUPANCY_SENSOR    //Occupancy Sensor Device.
+//#define APP_SENSOR_TYPE_LIGHT_SENSOR
+```
+
+- From projects, go to source files->app_zigbee->app_zigbee_handler.c and comment lines 620 to 653
 
 ```
 //        case CMD_ZCL_ATTR_OCCUPANCY:
@@ -261,14 +268,8 @@ void humidityMeasurementUpdateMeasuredValue(uint16_t humidity);
 //        break;
 ```
 
-**Step 12** - From Projects, go to Header files->config->default->zigbee->z3device_configs->zigbeeAppConfig.h and comment lines 160 and 161.
 
-```
-//#define APP_SENSOR_TYPE_OCCUPANCY_SENSOR    //Occupancy Sensor Device.
-//#define APP_SENSOR_TYPE_LIGHT_SENSOR
-```
-
-**Step 13** - To enable in printf in your project, go to Source files->config->default->stdio->xc32_monitor.c and replace with the following code.
+**Step 12** - To enable in printf in your project, go to Source files->config->default->stdio->xc32_monitor.c and replace with the following code.
 
 ```
 #include <stddef.h>
@@ -307,7 +308,7 @@ int write(int handle, void * buffer, size_t count)
 }
 ```
 
-**Step 14** - Clean and build the project. To run the project, select "Make and program device" button.
+**Step 13** - Clean and build the project. To run the project, select "Make and program device" button.
 
 ### Getting started with Combined Interface application in WBZ451 Curiosity board 
 
@@ -346,3 +347,7 @@ Follow the steps provided in the link to [Build and program the application](htt
 |Note|This step will require Alexa app|
 	- After plugging in your alexa , say "Alexa discover devices" and the network will be established. Go into the disovered device in the app and we can see the temperature reported in the alexa app as shown below.
 ![](Docs/Alexa_multisensor_output.jpg)	
+
+#### Note
+
+This application will also work with [Zigbee CI OLED Display](https://github.com/MicrochipTech/PIC32CXBZ2_WBZ45x_ZIGBEE_CI_OLED_Display).

@@ -617,40 +617,40 @@ void Cluster_Event_Handler(APP_Zigbee_Event_t event)
             //appSnprintf("ZCL IdentifyAttributeEventInd\r\n");
         }
         break;
-        case CMD_ZCL_ATTR_OCCUPANCY:
-        {
-            /* Command ZCL OccupancyAttributeEventInd */
-            //Access - > event.eventData.zclAttributeData.addressing;
-            //Access - > event.eventData.zclAttributeData.attributeId;
-            //Access - > event.eventData.zclAttributeData.event;
-            ZCL_AttributeEvent_t eventzcl = event.eventData.zclAttributeData.event;
-            ZCL_AttributeId_t attributeId = event.eventData.zclAttributeData.attributeId;
-            if ((ZCL_CONFIGURE_DEFAULT_ATTRIBUTE_REPORTING_EVENT == eventzcl) && \
-                (ZCL_OCCUPANCY_SENSING_CLUSTER_OCCUPANCY_SERVER_ATTRIBUTE_ID == attributeId))
-            {
-                osOccupancySensingClusterServerAttributes.occupancy.minReportInterval = OCCUPANCY_SENSING_VAL_MIN_REPORT_PERIOD;
-                osOccupancySensingClusterServerAttributes.occupancy.maxReportInterval = OCCUPANCY_SENSING_VAL_MAX_REPORT_PERIOD;
-                osOccupancySensingClusterServerAttributes.occupancy.reportableChange = 0;     
-            }
-        }
-        break;
-        case CMD_ZCL_ATTR_ILLUMINANCE_MEASUREMENT:
-        {
-            /* Command ZCL OnOffAttributeEventInd */
-            //Access - > event.eventData.zclAttributeData.addressing;
-            //Access - > event.eventData.zclAttributeData.attributeId;
-            //Access - > event.eventData.zclAttributeData.event;
-            ZCL_AttributeEvent_t eventzcl = event.eventData.zclAttributeData.event;
-            ZCL_AttributeId_t attributeId = event.eventData.zclAttributeData.attributeId;
-            if((ZCL_CONFIGURE_DEFAULT_ATTRIBUTE_REPORTING_EVENT == eventzcl) && \
-                (ZCL_ILLUMINANCE_MEASUREMENT_CLUSTER_MEASURED_VALUE_SERVER_ATTRIBUTE_ID == attributeId))
-            {
-                lsIlluminanceMeasurementClusterServerAttributes.measuredValue.minReportInterval = ILLUMINANCE_MEASUREMENT_VAL_MIN_REPORT_PERIOD;
-                lsIlluminanceMeasurementClusterServerAttributes.measuredValue.maxReportInterval = ILLUMINANCE_MEASUREMENT_VAL_MAX_REPORT_PERIOD;
-                lsIlluminanceMeasurementClusterServerAttributes.measuredValue.reportableChange = 0;
-            }
-        }
-        break;
+//         case CMD_ZCL_ATTR_OCCUPANCY:
+//         {
+//             /* Command ZCL OccupancyAttributeEventInd */
+//             //Access - > event.eventData.zclAttributeData.addressing;
+//             //Access - > event.eventData.zclAttributeData.attributeId;
+//             //Access - > event.eventData.zclAttributeData.event;
+//             ZCL_AttributeEvent_t eventzcl = event.eventData.zclAttributeData.event;
+//             ZCL_AttributeId_t attributeId = event.eventData.zclAttributeData.attributeId;
+//             if ((ZCL_CONFIGURE_DEFAULT_ATTRIBUTE_REPORTING_EVENT == eventzcl) && \
+//                 (ZCL_OCCUPANCY_SENSING_CLUSTER_OCCUPANCY_SERVER_ATTRIBUTE_ID == attributeId))
+//             {
+//                 osOccupancySensingClusterServerAttributes.occupancy.minReportInterval = OCCUPANCY_SENSING_VAL_MIN_REPORT_PERIOD;
+//                 osOccupancySensingClusterServerAttributes.occupancy.maxReportInterval = OCCUPANCY_SENSING_VAL_MAX_REPORT_PERIOD;
+//                 osOccupancySensingClusterServerAttributes.occupancy.reportableChange = 0;     
+//             }
+//         }
+//         break;
+//         case CMD_ZCL_ATTR_ILLUMINANCE_MEASUREMENT:
+//         {
+//             /* Command ZCL OnOffAttributeEventInd */
+//             //Access - > event.eventData.zclAttributeData.addressing;
+//             //Access - > event.eventData.zclAttributeData.attributeId;
+//             //Access - > event.eventData.zclAttributeData.event;
+//             ZCL_AttributeEvent_t eventzcl = event.eventData.zclAttributeData.event;
+//             ZCL_AttributeId_t attributeId = event.eventData.zclAttributeData.attributeId;
+//             if((ZCL_CONFIGURE_DEFAULT_ATTRIBUTE_REPORTING_EVENT == eventzcl) && \
+//                 (ZCL_ILLUMINANCE_MEASUREMENT_CLUSTER_MEASURED_VALUE_SERVER_ATTRIBUTE_ID == attributeId))
+//             {
+//                 lsIlluminanceMeasurementClusterServerAttributes.measuredValue.minReportInterval = ILLUMINANCE_MEASUREMENT_VAL_MIN_REPORT_PERIOD;
+//                 lsIlluminanceMeasurementClusterServerAttributes.measuredValue.maxReportInterval = ILLUMINANCE_MEASUREMENT_VAL_MAX_REPORT_PERIOD;
+//                 lsIlluminanceMeasurementClusterServerAttributes.measuredValue.reportableChange = 0;
+//             }
+//         }
+//         break;
         case CMD_ZCL_ATTR_HUMIDITY_MEASUREMENT:
         {
             /* Command ZCL CustomHumidityMeasurementReportInd Prints Report Value */

@@ -157,8 +157,8 @@
 //-----------------------------------------------
 #if (APP_Z3_DEVICE_TYPE == APP_DEVICE_TYPE_MULTI_SENSOR)
   /* Enable Different Sensor Type under Multi-Sensor */
-#define APP_SENSOR_TYPE_OCCUPANCY_SENSOR    //Occupancy Sensor Device.
-#define APP_SENSOR_TYPE_LIGHT_SENSOR        //Light Sensor Device.
+// #define APP_SENSOR_TYPE_OCCUPANCY_SENSOR    //Occupancy Sensor Device.
+// #define APP_SENSOR_TYPE_LIGHT_SENSOR        //Light Sensor Device.
 #define APP_SENSOR_TYPE_HUMIDITY_SENSOR     // Humidity Sensor.
 #define APP_SENSOR_TYPE_TEMPERATURE_SENSOR  // Temperature Sensor.
 #endif

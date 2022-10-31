@@ -314,7 +314,7 @@ int write(int handle, void * buffer, size_t count)
 
 - Combined interface application folder will be available in this [link](https://github.com/Microchip-MPLAB-Harmony/wireless_apps_pic32cxbz2_wbz45/tree/master/apps/zigbee/combinedInterface).
 - Follow the steps provided in the above mentioned link to program the board.
-- To create the MCC project from scratch follow steps provided in this [link](https://github.com/MicrochipTech/PIC32CXBZ2_WBZ45x_ZIGBEE_MULTISENSOR_TEMPHUM13_CLICK/tree/main/Zigbee_Combined_Interface/#creating-combined-interface-application-from-scratch-in-wbz451).
+- To create the MCC project from scratch follow steps provided in this [link](https://github.com/MicrochipTech/PIC32CXBZ2_WBZ45x_ZIGBEE_MULTISENSOR_TEMPHUM13_CLICK/tree/main/Docs#creating-combined-interface-application-from-scratch-in-wbz451).
 
 ## 6. Board Programming<a name="step6">
 

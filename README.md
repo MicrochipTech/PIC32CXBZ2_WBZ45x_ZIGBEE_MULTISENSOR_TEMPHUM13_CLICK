@@ -131,7 +131,7 @@ Connect the Temp&Hum 13 click onto the Mikro bus header of the WBZ451 Curiosity 
 - Make sure the "Files of type" is "C Source files" while adding ".c" files and "Header files" while adding ".h" files.
 - Select the folder and click "add".
 
-**Step 8** - From Projects, go to Source files->config->default->zigbee->z3device->multiSensor->multiSensor.c and replace the following code. In the "updateSensorsAttributeValues(void)" function comment code lines 235 to 241 and add the following code line to update the temperature and relative humidity measurement from the Temp&Hum13 click.
+**Step 8** - From Projects, go to Source files->config->default->zigbee->z3device->multiSensor->multiSensor.c and replace the "updateSensorsAttributeValues(void)" function with the below code. In the "updateSensorsAttributeValues(void)" function comment code lines 235 to 241 and add the following code line to update the temperature and relative humidity measurement from the Temp&Hum13 click.
 
 ```
 static void updateSensorsAttributeValues(void)
@@ -166,7 +166,7 @@ The project file after making the above mentioned changes is shown below.
 #include "app_temphum13/app_temphum13.h"
 ```
 
-**Step 9** - From Projects, go to Source files->config->default->zigbee->z3device->multiSensor->tsTemperatureMeasurementCluster.c and replace the following code.
+**Step 9** - From Projects, go to Source files->config->default->zigbee->z3device->multiSensor->tsTemperatureMeasurementCluster.c and replace the "tempeartureMeasurementUpdateMeasuredValue" function with the following code.
 
 ```
 void tempeartureMeasurementUpdateMeasuredValue(uint16_t temp)
@@ -197,7 +197,7 @@ The project file after making the above mentioned changes is shown below.
 void tempeartureMeasurementUpdateMeasuredValue(uint16_t temp);
 ```
 
-**Step 10** - From Projects, go to Source files->config->default->zigbee->z3device->multiSensor->hsHumidityMeasurementCluster.c and replace the following code.
+**Step 10** - From Projects, go to Source files->config->default->zigbee->z3device->multiSensor->hsHumidityMeasurementCluster.c and replace the pre-existing function with the below code.
 
 ```
 void humidityMeasurementUpdateMeasuredValue(uint16_t humidity)
@@ -275,7 +275,7 @@ void humidityMeasurementUpdateMeasuredValue(uint16_t humidity);
 //        break;
 ```
 
-**Step 12** - To enable in printf in your project, go to Source files->config->default->stdio->xc32_monitor.c and replace with the following code.
+**Step 12** - To enable in printf in your project, go to Source files->config->default->stdio->xc32_monitor.c and replace the pre-existing file with the below code.
 
 ```
 #include <stddef.h>

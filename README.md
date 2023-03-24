@@ -191,7 +191,7 @@ The project file after making the above mentioned changes is shown below.
 
 ![](Docs/temp_measurement.PNG)
 
-- From Projects, go to Header files->config->default->zigbee->z3device->multiSensor->include->tsTemperatureMeasurementCluster.h and replace the following code.
+- From Projects, go to Header files->config->default->zigbee->z3device->multiSensor->include->tsTemperatureMeasurementCluster.h and replace the code line 88 with the below code.
 
 ```
 void tempeartureMeasurementUpdateMeasuredValue(uint16_t temp);
@@ -223,7 +223,7 @@ The project file after making the above mentioned changes is shown below.
 
 ![](Docs/hum_measurement.PNG)
 
-- From Projects, go to Header files->config->default->zigbee->z3device->multiSensor->include->hsHumidityMeasurementCluster.h and replace the following code.
+- From Projects, go to Header files->config->default->zigbee->z3device->multiSensor->include->hsHumidityMeasurementCluster.h and replace the code line 87 with the below code.
 
 ```
 void humidityMeasurementUpdateMeasuredValue(uint16_t humidity);

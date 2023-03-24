@@ -131,7 +131,7 @@ Connect the Temp&Hum 13 click onto the Mikro bus header of the WBZ451 Curiosity 
 - Make sure the "Files of type" is "C Source files" while adding ".c" files and "Header files" while adding ".h" files.
 - Select the folder and click "add".
 
-**Step 8** - From Projects, go to Source files->config->default->zigbee->z3device->multiSensor->multiSensor.c and replace the following code.
+**Step 8** - From Projects, go to Source files->config->default->zigbee->z3device->multiSensor->multiSensor.c and replace the following code. In the "updateSensorsAttributeValues(void)" function comment code lines 235 to 241 and add the following code line to update the temperature and relative humidity measurement from the Temp&Hum13 click.
 
 ```
 static void updateSensorsAttributeValues(void)
@@ -145,17 +145,19 @@ static void updateSensorsAttributeValues(void)
 //#endif
 
 #ifdef APP_SENSOR_TYPE_TEMPERATURE_SENSOR
-  uint16_t temperature_sensor_val = temphum13_get_temperature();
-  tempeartureMeasurementUpdateMeasuredValue(temperature_sensor_val);
+  uint16_t temperature = temphum13_get_temperature();
+  tempeartureMeasurementUpdateMeasuredValue(temperature);
 #endif
 
 #ifdef APP_SENSOR_TYPE_HUMIDITY_SENSOR
-  uint16_t humidity_sensor_val = temphum13_get_humidity();
-  humidityMeasurementUpdateMeasuredValue(humidity_sensor_val);
+  uint16_t humidity = temphum13_get_humidity();
+  humidityMeasurementUpdateMeasuredValue(humidity);
 #endif
   
 }
 ```
+
+The project file after making the above mentioned changes is shown below.
 
 ![](Docs/Code_Mulstisensor.png)
 
@@ -184,6 +186,9 @@ void tempeartureMeasurementUpdateMeasuredValue(uint16_t temp)
 #endif
 }
 ```
+
+The project file after making the above mentioned changes is shown below.
+
 ![](Docs/temp_measurement.PNG)
 
 - From Projects, go to Header files->config->default->zigbee->z3device->multiSensor->include->tsTemperatureMeasurementCluster.h and replace the following code.
@@ -213,6 +218,8 @@ void humidityMeasurementUpdateMeasuredValue(uint16_t humidity)
 #endif
 }
 ```
+
+The project file after making the above mentioned changes is shown below.
 
 ![](Docs/hum_measurement.PNG)
 
@@ -267,7 +274,6 @@ void humidityMeasurementUpdateMeasuredValue(uint16_t humidity);
 //        }
 //        break;
 ```
-
 
 **Step 12** - To enable in printf in your project, go to Source files->config->default->stdio->xc32_monitor.c and replace with the following code.
 
@@ -344,7 +350,9 @@ Follow the steps provided in the link to [Build and program the application](htt
 ![](Docs/CI_output.PNG)
 
 - The multisensor application can also be connected to Alexa. To connect to alexa please follow the steps mentioned below.
+
 |Note|This step will require Alexa app|
+
 	- After plugging in your alexa , say "Alexa discover devices" and the network will be established. Go into the disovered device in the app and we can see the temperature reported in the alexa app as shown below.
 ![](Docs/Alexa_multisensor_output.jpg)	
 

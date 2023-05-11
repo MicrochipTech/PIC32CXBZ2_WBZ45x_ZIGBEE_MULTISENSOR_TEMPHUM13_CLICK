@@ -1,4 +1,4 @@
-# WBZ45x ZIGBEE MULTISENSOR DEMO
+# PIC32CXBZ2_WBZ45x ZIGBEE MULTISENSOR DEMO
 
 <img src="Docs/IoT-Made-Easy-Logo.png" width=100>
 

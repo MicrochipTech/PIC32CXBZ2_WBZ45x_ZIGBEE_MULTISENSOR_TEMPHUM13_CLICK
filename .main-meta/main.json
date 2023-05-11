@@ -5,9 +5,9 @@
         "metaDataVersion": "1.3.0",
         "name": "com.microchip.mplabx.project.PIC32CXBZ2_WBZ45x_ZIGBEE_MULTISENSOR_TEMPHUM13_CLICK",
         "version": "1.0.0",
-        "displayName": "WBZ45x ZIGBEE MULTISENSOR DEMO",
+        "displayName": "PIC32CXBZ2_WBZ45x ZIGBEE MULTISENSOR DEMO",
         "projectName": "PIC32CXBZ2_WBZ45x_ZIGBEE_MULTISENSOR_TEMPHUM13_CLICK",
-        "shortDescription": "This Zigbee (End Device) multi-sensor application will read temperature and humidity data from TempHum13 click board and report the same to devices in the Zigbee network.",
+        "shortDescription": "IoT Made Easy!-This Zigbee (End Device) multi-sensor application will read temperature and humidity data from TempHum13 click board and report the same to devices in the Zigbee network.",
         "ide": {
             "name": "MPLAB X",
             "semverRange": ">=6.00"
